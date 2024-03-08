@@ -53,20 +53,20 @@ deploy-gitea:
 	$(BASE)/scripts/init-gitea $(GIT_PROJ) gitea $(GIT_ADMIN) $(GIT_PASSWORD) $(GIT_ADMIN)@example.com $(TMP_REPO) $(GIT_REPO) 'Demo App'
 	rm -rf $(TMP_REPO)
 
-create-clusters:
+create-cluster-dependencies:
 	@if ! oc get project open-cluster-management 2>/dev/null >/dev/null; then \
 	  echo "this cluster does not have ACM installed"; \
 	  oc apply -f $(BASE)/yaml/single-cluster-rbac/clusterrolebinding.yaml; \
 	  oc apply -f $(BASE)/yaml/single-cluster/coolstore.yaml; \
 	else \
 	  echo "this cluster has ACM installed"; \
-	  oc label managedcluster local-cluster cloud-; \
-	  oc label managedcluster local-cluster cloud=vmware; \
+	  #oc label managedcluster local-cluster cloud-; \
+	  #oc label managedcluster local-cluster cloud=vmware; \
 	  oc apply -f $(BASE)/yaml/acm-gitops/acm-gitops.yaml; \
-	  $(BASE)/scripts/create-clusterset; \
-	  $(BASE)/scripts/create-clusters; \
+	  #$(BASE)/scripts/create-clusterset; \
+	  #$(BASE)/scripts/create-clusters; \
 	  $(BASE)/scripts/setup-console-banners; \
-	  $(BASE)/scripts/setup-letsencrypt; \
+	  #$(BASE)/scripts/setup-letsencrypt; \
 	  $(BASE)/scripts/install-submariner; \
 	  $(BASE)/scripts/configure-hugepages; \
 	  oc apply -f $(BASE)/yaml/argocd/coolstore.yaml; \
