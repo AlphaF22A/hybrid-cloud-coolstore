@@ -61,7 +61,6 @@ create-cluster-dependencies:
 	else \
 	  echo "this cluster has ACM installed"; \
 	  oc apply -f $(BASE)/yaml/acm-gitops/acm-gitops.yaml; \
-	  $(BASE)/scripts/setup-console-banners; \
 	  $(BASE)/scripts/configure-hugepages; \
 	  oc apply -f $(BASE)/yaml/argocd/coolstore.yaml; \
 	fi
