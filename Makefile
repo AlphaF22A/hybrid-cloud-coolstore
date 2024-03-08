@@ -37,7 +37,7 @@ clean-remote-install:
 	  oc delete clusterrolebinding $$s; \
 	done
 
-create-aws-credentials:
+#create-aws-credentials:
 	$(BASE)/scripts/create-aws-credentials
 
 create-bastion-credentials:
