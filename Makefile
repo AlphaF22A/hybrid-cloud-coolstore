@@ -60,14 +60,8 @@ create-cluster-dependencies:
 	  oc apply -f $(BASE)/yaml/single-cluster/coolstore.yaml; \
 	else \
 	  echo "this cluster has ACM installed"; \
-	  #oc label managedcluster local-cluster cloud-; \
-	  #oc label managedcluster local-cluster cloud=vmware; \
 	  oc apply -f $(BASE)/yaml/acm-gitops/acm-gitops.yaml; \
-	  #$(BASE)/scripts/create-clusterset; \
-	  #$(BASE)/scripts/create-clusters; \
 	  $(BASE)/scripts/setup-console-banners; \
-	  #$(BASE)/scripts/setup-letsencrypt; \
-	  #$(BASE)/scripts/install-submariner; \
 	  $(BASE)/scripts/configure-hugepages; \
 	  oc apply -f $(BASE)/yaml/argocd/coolstore.yaml; \
 	fi
