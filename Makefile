@@ -6,7 +6,7 @@ include $(BASE)/config.sh
 
 .PHONY: install remote-install clean-remote-install create-aws-credentials install-gitops deploy-gitea create-clusters demo-manual-install argocd argocd-password gitea coolstore-ui topology-view coolstore-a-password metrics alerts generate-orders email remove-lag login-a login-b login-c contexts hugepages f5 verify-f5 installer-image create-bastion-credentials install-with-f5 create-argocd-account create-token deploy-handler add-gitea-webhook
 
-install: create-aws-credentials install-gitops deploy-gitea create-clusters create-argocd-account create-token deploy-handler add-gitea-webhook
+install: create-aws-credentials install-gitops deploy-gitea create-cluster-dependencies create-argocd-account create-token deploy-handler add-gitea-webhook
 	@echo "done"
 
 # This is the same as the above 'install:' rule except the 'create-bastion-credentials' script is a wrapper for 'create-aws-credentials' script. 
@@ -67,7 +67,7 @@ create-cluster-dependencies:
 	  #$(BASE)/scripts/create-clusters; \
 	  $(BASE)/scripts/setup-console-banners; \
 	  #$(BASE)/scripts/setup-letsencrypt; \
-	  $(BASE)/scripts/install-submariner; \
+	  #$(BASE)/scripts/install-submariner; \
 	  $(BASE)/scripts/configure-hugepages; \
 	  oc apply -f $(BASE)/yaml/argocd/coolstore.yaml; \
 	fi
