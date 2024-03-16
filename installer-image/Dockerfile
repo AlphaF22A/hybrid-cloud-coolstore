@@ -5,6 +5,8 @@ RUN \
   && \
   dnf install -y git make jq \
   && \
+  chmod u+x /usr/bin/jq \
+  && \
   mkdir /tmp/install \
   && \
   curl -Lo /tmp/install/oc.tgz https://mirror.openshift.com/pub/openshift-v4/clients/ocp/4.12.18/openshift-client-linux-4.12.18.tar.gz \
