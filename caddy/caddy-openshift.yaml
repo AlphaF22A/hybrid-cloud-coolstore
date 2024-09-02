@@ -110,10 +110,10 @@ metadata:
 ---
 apiVersion: v1
 data:
-  DNS_DOMAIN: hcd4.ltsai.com
-  DOMAIN_1: apps.aws-ocp-cluster-1.sandbox2864.opentlc.com
-  DOMAIN_2: apps.drosf81f.eastus.aroapp.io
-  DOMAIN_3: apps.gcp-ocp-cluster-1.nh86r.gcp.redhatworkshops.io
+  DNS_DOMAIN: redhatcoolstoredemo.com
+  DOMAIN_1: apps.ocp4-jrxgs-ipi.azure.opentlc.com
+  DOMAIN_2: apps.coolstore-b.lsj8f.gcp.redhatworkshops.io
+  DOMAIN_3: apps.coolstore-c.sandbox400.opentlc.com
 kind: ConfigMap
 metadata:
   labels:
